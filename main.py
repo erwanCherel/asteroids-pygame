@@ -4,6 +4,7 @@ from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
+import game_vars
 
 
 def main():
@@ -28,6 +29,8 @@ def main():
 
     dt = 0
 
+    font = pygame.font.Font(None, 36)
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -49,6 +52,10 @@ def main():
 
         for obj in drawable:
             obj.draw(screen)
+
+        score_text = font.render(
+            f'Score: {game_vars.SCORE}', True, (255, 255, 255))
+        screen.blit(score_text, (10, 10))
 
         pygame.display.flip()
 
